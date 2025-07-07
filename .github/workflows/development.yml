@@ -1,0 +1,18 @@
+name: Continuous Integration
+on:
+    push:
+        branches:
+            - master
+jobs:
+    run-deault-tests:
+        name: Run NPM Default Tests
+        runs-on: ubuntu-latest
+        steps:
+            - name: Pull Repo
+              uses: actions/checkout@v4
+            
+            - name: Build docker image
+              run: docker build -t jayes/docker-react -f Dockerfile.dev .
+            
+            - name: Run tests
+              run: docker run jayes/docker-react npm run test -- --coverage
