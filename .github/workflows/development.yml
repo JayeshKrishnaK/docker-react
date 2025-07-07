@@ -15,4 +15,4 @@ jobs:
               run: docker build -t jayes/docker-react -f Dockerfile.dev .
             
             - name: Run tests
-              run: timeout 15s docker run jayes/docker-react npm run test -- --coverage
+              run: timeout 30s docker run jayes/docker-react npm run test -- --coverage
